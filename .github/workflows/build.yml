@@ -1,4 +1,6 @@
-name: Build APK
+[4/25/2026 6:33 PM] ◔͜͡◔ Mohammad ◔͜͡◔: uses: actions/upload-artifact@v4
+[4/25/2026 6:41 PM] ◔͜͡◔ Mohammad ◔͜͡◔: https://github.com/mhmdjfrpwr516-ai/shop_accounting/edit/main/.github/workflows/build.yml
+[4/25/2026 6:41 PM] ◔͜͡◔ Mohammad ◔͜͡◔: name: Build APK
 on:
   push:
     branches: [ main ]
@@ -18,9 +20,10 @@ jobs:
       - name: Install buildozer
         run: pip install buildozer cython
       - name: Build APK
+        working-directory: shop_accounting
         run: buildozer android debug
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: ShopAccounting-APK
-          path: bin/*.apk
+          path: shop_accounting/bin/*.apk

@@ -1,9 +1,7 @@
-[4/25/2026 6:33 PM] ◔͜͡◔ Mohammad ◔͜͡◔: uses: actions/upload-artifact@v4
-[4/25/2026 6:41 PM] ◔͜͡◔ Mohammad ◔͜͡◔: https://github.com/mhmdjfrpwr516-ai/shop_accounting/edit/main/.github/workflows/build.yml
-[4/25/2026 6:41 PM] ◔͜͡◔ Mohammad ◔͜͡◔: name: Build APK
+name: Build APK
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,19 +9,17 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3-pip build-essential git \
-            libssl-dev libffi-dev openjdk-17-jdk zip unzip
+          sudo apt-get install -y python3-pip build-essential git libssl-dev libffi-dev openjdk-17-jdk zip unzip
       - name: Install buildozer
         run: pip install buildozer cython
       - name: Build APK
-        working-directory: shop_accounting
         run: buildozer android debug
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: ShopAccounting-APK
-          path: shop_accounting/bin/*.apk
+          path: bin/*.apk

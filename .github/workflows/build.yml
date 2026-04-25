@@ -17,9 +17,10 @@ jobs:
       - name: Install buildozer
         run: pip install buildozer cython
       - name: Build APK
+        working-directory: shop_accounting
         run: buildozer android debug
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: ShopAccounting-APK
-          path: bin/*.apk
+          path: shop_accounting/bin/*.apk
